@@ -1,39 +1,42 @@
 package entity;
 
-import javafx.beans.DefaultProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
+import java.util.Date;
 
-@DefaultProperty("private")
+@Data
 @Entity
-@AllArgsConstructor
+@XmlRootElement
 @NoArgsConstructor
-@Getter
-@Setter
+@AllArgsConstructor
 @Table(name = "student")
-public class Student {
-
+public class Student implements Serializable {
     @Id
     int id;
     @Column(name = "full_name", nullable = false)
     String fullName;
+
     @Column(nullable = false)
-    String birthday;
+    Date birthday;
+
     @Column(name = "class_name", nullable = false)
     String className;
-    @Column( nullable = false)
-    String Major;
-    @Column( nullable = false)
+
+    @Column(nullable = false)
+    String major;
+
+    @Column(nullable = false)
     String hometown;
+
     @Column(nullable = false)
     String gender;
+
     @Column(name = "average_mark", nullable = false)
     float averageMark;
 }
